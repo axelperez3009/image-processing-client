@@ -2,12 +2,12 @@ package com.remote.client;
 
 import java.awt.image.BufferedImage;
 
-public class ProcesamientoHilo extends Thread {
+public class ThreadProcessing extends Thread {
     public JoinedImage joinedImage;
     public BufferedImage partImage;
     public int id;
     
-    public ProcesamientoHilo(BufferedImage partImage, int id, JoinedImage joinedImage) {
+    public ThreadProcessing(BufferedImage partImage, int id, JoinedImage joinedImage) {
         this.partImage = partImage;
         this.id = id;
         this.joinedImage = joinedImage;

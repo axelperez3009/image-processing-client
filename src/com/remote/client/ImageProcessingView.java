@@ -92,7 +92,7 @@ public class ImageProcessingView extends javax.swing.JFrame implements Runnable 
         int partWidth = image.getWidth() / numHilos;
         int totalParts = numHilos;
         JoinedImage joinedImage = new JoinedImage(ImagenFiltradaConcurrente, totalParts);
-        ProcesamientoHilo[] hilos = new ProcesamientoHilo[numHilos];
+        ThreadProcessing[] hilos = new ThreadProcessing[numHilos];
         for (int i = 0; i < numHilos; i++) {
             int startX = i * partWidth;
             int endX = (i + 1) * partWidth;
@@ -100,7 +100,7 @@ public class ImageProcessingView extends javax.swing.JFrame implements Runnable 
                 endX = image.getWidth();
             }
             BufferedImage imagePart = image.getSubimage(startX, 0, endX - startX, image.getHeight());
-            hilos[i] = new ProcesamientoHilo(imagePart, i, joinedImage);
+            hilos[i] = new ThreadProcessing(imagePart, i, joinedImage);
             hilos[i].start();
         }
     }
